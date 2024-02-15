@@ -1,0 +1,61 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title">Players List</span>
+                    <button
+                        class="btn btn-success float-end"
+                        routerLink="/create-players"
+                    >
+                        Add Players
+                    </button>
+                    <table
+                        *ngIf="listPlayers.length > 0"
+                        class="table table-striped mt-3"
+                    >
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Prices/Hour</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let players of listPlayers">
+                                <td>{{ players.name }}</td>
+                                <td>{{ players.category }}</td>
+                                <td>{{ players.location }}</td>
+                                <td>{{ players.price | currency: 'USD' }}</td>
+                                <td>
+                                    <i
+                                        [routerLink]="[
+                                            '/edit-players',
+                                            players._id
+                                        ]"
+                                        class="fas fa-edit text-primary"
+                                    ></i>
+                                    <i
+                                        role="button"
+                                        tabindex="0"
+                                        (keydown)="deletePlayer(players._id)"
+                                        (click)="deletePlayer(players._id)"
+                                        class="fas fa-trash text-danger"
+                                    ></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5
+                        *ngIf="listPlayers.length === 0"
+                        style="text-align: start; margin-top: 10px"
+                    >
+                        No players to display
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
