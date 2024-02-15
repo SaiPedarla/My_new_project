@@ -1,0 +1,111 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title"> {{ title | uppercase }} </span>
+                    <form
+                        class="mt-3"
+                        [formGroup]="playerForm"
+                        (ngSubmit)="addPlayer()"
+                    >
+                        <div class="mb-3">
+                            <input
+                                type="text"
+                                formControlName="name"
+                                class="form-control form-control-lg"
+                                placeholder="Name"
+                            />
+                            <div
+                                class="text-danger"
+                                *ngIf="
+                                    playerForm
+                                        .get('name')
+                                        ?.hasError('required') &&
+                                    playerForm.get('name')?.touched
+                                "
+                            >
+                                <span
+                                    >Players Name
+                                    <strong>Required</strong></span
+                                >
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input
+                                type="text"
+                                formControlName="category"
+                                class="form-control form-control-lg"
+                                placeholder="Category"
+                            />
+                            <div
+                                class="text-danger"
+                                *ngIf="
+                                    playerForm
+                                        .get('category')
+                                        ?.hasError('required') &&
+                                    playerForm.get('category')?.touched
+                                "
+                            >
+                                <span>Category <strong>Required</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input
+                                type="text"
+                                formControlName="location"
+                                class="form-control form-control-lg"
+                                placeholder="Location"
+                            />
+                            <div
+                                class="text-danger"
+                                *ngIf="
+                                    playerForm
+                                        .get('location')
+                                        ?.hasError('required') &&
+                                    playerForm.get('location')?.touched
+                                "
+                            >
+                                <span>Location <strong>Required</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <input
+                                type="number"
+                                formControlName="price"
+                                class="form-control form-control-lg"
+                                placeholder="Price"
+                            />
+                            <div
+                                class="text-danger"
+                                *ngIf="
+                                    playerForm
+                                        .get('price')
+                                        ?.hasError('required') &&
+                                    playerForm.get('price')?.touched
+                                "
+                            >
+                                <span>Price <strong>Required</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button
+                                routerLink="/"
+                                class="btn btn-secondary btn-lg float-start"
+                            >
+                                BACK
+                            </button>
+                            <button
+                                type="submit"
+                                [disabled]="playerForm.invalid"
+                                class="btn btn-success btn-lg float-end"
+                            >
+                                SAVE
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
