@@ -40,7 +40,7 @@ describe('PlayerServiceMock', () => {
         httpSpy.get.mockReturnValue(of(playersMock));
 
         service.getPlayers().subscribe((data: Players[]) => {
-            expect(data[0].name).toBe('Coca-Cola');
+            expect(data[0].name).toBe('Siva');
         });
     });
 
@@ -53,15 +53,15 @@ describe('PlayerServiceMock', () => {
     });
     it('createPlayer should...', () => {
         const players: Players = {
-            name: 'Coca-Cola',
-            category: 'Fruit',
+            name: 'Siva',
+            category: 'Football',
             location: 'Somewhere',
             price: 3,
         };
         httpSpy.get.mockReturnValue(of(playerMock));
 
         service.createPlayer(players).subscribe((data: Players) => {
-            expect(data.name).toBe('Coca-Cola');
+            expect(data.name).toBe('Siva');
         });
     });
 
@@ -69,14 +69,14 @@ describe('PlayerServiceMock', () => {
         httpSpy.get.mockReturnValue(of(playerMock));
 
         service.getPlayer(playerMock._id).subscribe((data: Players) => {
-            expect(data.name).toBe('Coca-Cola');
+            expect(data.name).toBe('Siva');
         });
     });
 
     it('editPlayer should...', () => {
         const players: Players = {
-            name: 'Coca-Cola',
-            category: 'Fruit',
+            name: 'Siva',
+            category: 'Football',
             location: 'Somewhere',
             price: 3,
         };
@@ -85,7 +85,7 @@ describe('PlayerServiceMock', () => {
         service
             .editPlayer(playerMock._id, players)
             .subscribe((data: Players) => {
-                expect(data.name).toBe('Coca-Cola');
+                expect(data.name).toBe('Siva');
             });
     });
 });
